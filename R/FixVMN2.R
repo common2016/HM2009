@@ -3,24 +3,46 @@
 #' @param f Pointer the vector valued function F(x), whose
 #'                  zero, F(x1)=0, is to be computed.
 #' @param bounds k timex 2 vector of upper and lower bounds on x
-#' @param x0  = k times 1 vector of starting values
+#' @param x0  k times 1 vector of starting values
 #' @param stopc stopping criterium
 #' @param pTol parameter convergence criterium
 #' @param MNR_CDJac wheather using \code{CDJac} computing Jacobian matrix, with fault value is TRUE.
 #' @param MNR_Global wheather using line search, with fault value is FALSE.
 #' @param ... any additional arguments passed to \code{f}.
 #'
-#'  @return a list including x1 and crit. x1 is k times 1 vector, the approximate solution to F(x1)=0.
+#' @importFrom matlab ones
+#' @return a list including x1 and crit. x1 is k times 1 vector, the approximate solution to F(x1)=0.
+#'
 #'  \code{crit} is 1 vector, where
-#'       \code{crit[1]=0} : normal termination
-#'              =1 : function evaluation failed,
-#'              =2 : no further decrease in function value possible,
-#'              =3 : maximum number of iterations exceedes
-#'       \code{crit[2]}   : termination criterion: max(abs(f(x)))
-#'       \code{crit[3]}   : the maximum relative change of x between the last two iterations
-#'       \code{crit[4]}   : f(x)'f(x)/2
-#'       \code{crit[5]}   : number of iterations
+#'  \itemize{
+#'       \item \itemize{
+#'     \item \code{crit[1]=0} : normal termination
+#'    \item      =1 : function evaluation failed,
+#'    \item      =2 : no further decrease in function value possible,
+#'     \item =3 : maximum number of iterations exceedes
+#'              }
+#'       \item \code{crit[2]}   : termination criterion: max(abs(f(x)))
+#'       \item \code{crit[3]}   : the maximum relative change of x between the last two iterations
+#'       \item \code{crit[4]}   : f(x)'f(x)/2
+#'       \item \code{crit[5]}   : number of iterations
+#'       }
 #' @export
+#'
+#' @examples
+#' # para setting
+#' library(matlab)
+#' alpha <- 0.27
+#' betax <- 0.994
+#' tmax <- 60
+#'
+#' x0 <- ones(tmax,1)
+#' bounds <- data.frame(dw = ones(tmax,1)*0.01, up = ones(tmax,1)*30)
+#' FixVMN2(x0 = x0,bounds = bounds, f = ramsey, k0 = 4.4, kT = 0, delta = 0.011)
+#'
+#' # another function to solve it
+#' rootSolve::multiroot(f = ramsey,start = x0,k0 = 4.4, kT = 0, delta = 0.011)
+
+
 
 
 

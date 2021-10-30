@@ -7,14 +7,14 @@
 ParTest(x, dx, typx)
 }
 \arguments{
-\item{x}{:= n times 1 vector}
+\item{x}{n times 1 vector}
 
-\item{dx}{:= n times 1 vector, change in x}
+\item{dx}{n times 1 vector, change in x}
 
-\item{typx}{:= n times 1 vector, typical elements of x}
+\item{typx}{n times 1 vector, typical elements of x}
 }
 \value{
-crit := scalar
+crit scalar
 }
 \description{
 Compute relative change in x

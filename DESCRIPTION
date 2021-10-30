@@ -16,4 +16,6 @@ RoxygenNote: 7.1.1
 Imports: 
     matlab,
     optR,
-    numDeriv
+    numDeriv,
+    magrittr,
+    rootSolve

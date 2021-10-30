@@ -14,7 +14,7 @@ CDJac(f, x0, ...)
 \item{...}{any additional arguments passed to \code{f}.}
 }
 \value{
-Jac: n by m matrix of parital derivatives
+Jac n by m matrix of parital derivatives
 }
 \description{
 computes a central difference approximation of the Jacobian
